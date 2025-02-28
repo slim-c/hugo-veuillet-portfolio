@@ -5,50 +5,56 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 const images = [
-  "./images/photo1.PNG",
-  "./images/photo2.PNG",
-  "./images/photo3.PNG",
-  "./images/photo4.PNG",
-  "./images/photo5.PNG",
-  "./images/photo6.PNG",
+  "./images/1.jpg",
+  "./images/2.jpg",
+  "./images/3.jpg",
+  "./images/4.jpg",
+  "./images/5.jpg",
+  "./images/6.jpg",
+  "./images/7.jpg",
+  "./images/8.jpg",
+  "./images/9.jpg",
+  "./images/10.jpg",
+  "./images/11.jpg",
+  "./images/12.jpg",
+  "./images/13.jpg",
 ];
 
 const App = () => {
   return (
-    <div className="relative h-screen w-full bg-white text-gray-900 flex flex-col items-center justify-center px-4">
-      {/* Photographer's Name (Top Left) */}
-      <div className="absolute top-4 left-4 md:left-10 z-10 p-0 bg-white">
-        <h1 className="text-3xl md:text-3xl lg:text-3xl">hugo veuillet</h1>
+    // <div className="h-screen w-full bg-white text-gray-900 flex flex-col justify-center items-center overflow-hidden p-4">
+         <div className="h-screen w-full bg-white text-gray-900 flex flex-col justify-center items-center overflow-hidden p-4">
+      <div className="absolute top-0 left-0 z-10 p-4 bg-white">
+        <h1 className="text-2xl md:text-3xl lg:text-3xl">hugo veuillet</h1>
+      </div>
+      {/* <div className="w-[80vw] h-[80vw] max-w-[600px] max-h-[600px] min-w-[300px] min-h-[300px] lg:w-[80vh] lg:h-[80vh] md:w-[50vh] md:h-[50vh] flex items-center justify-center"> */}
+      {/* Centered Square Gallery */}
+      <div className="flex-grow flex items-center justify-center">
+       <div className="w-[80vw] h-[80vw] max-w-[600px] max-h-[600px] min-w-[100px] min-h-[100px] lg:w-[80vh] lg:h-[80vh] md:w-[50vh] md:h-[50vh] sm:w-[50vh] sm:h-[50vh]">
+          <Swiper
+            modules={[Autoplay, Navigation, Pagination]}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            loop
+            // navigation
+            pagination={{ clickable: true }}
+            grabCursor
+            touchRatio={1}
+            className="h-full w-full"
+          >
+            {images.map((src, index) => (
+              <SwiperSlide key={index} className="flex justify-center items-center">
+                <img
+                  src={src}
+                  className="w-full h-full object-contain "
+                  alt={`Photo ${index + 1}`}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
 
-
-      {/* Responsive Gallery with Scroll & Swipe */}
-      <div className="w-full max-w-[600px] h-[400px] md:h-[500px] lg:h-[600px]">
-        <Swiper
-          modules={[Autoplay, Navigation, Pagination]}
-          autoplay={{ delay: 3000, disableOnInteraction: false }} 
-          loop={true} 
-          navigation={false}
-          pagination={{ clickable: true }} 
-          grabCursor={true} 
-          touchRatio={1} 
-          className="h-full w-full"
-        >
-          {images.map((src, index) => (
-            <SwiperSlide key={index} className="flex justify-center items-center">
-              <img
-                src={src}
-                className="w-full h-full object-cover shadow-lg rounded-lg"
-                alt={`Photo ${index + 1}`}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-
-
-      {/* Contact Links (Bottom Right) */}
-      <div className="absolute bottom-4 right-4 md:right-10 z-10 p-0 bg-white">
+      <div className="absolute bottom-0 right-0 md:right-0 z-10 p-4 bg-white ">
         <div className="mt-4 flex flex-row gap-2">
           <a
             href="mailto:veuillet.h@gmail.com"

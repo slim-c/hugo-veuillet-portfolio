@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'NimbusSansL';
-  src: url('./fonts/nimbus-sans-l.regular.otf') format('otf');
+  src: url('assets/fonts/nimbus-sans-l.regular.otf') format('otf');
 }
 
 body {

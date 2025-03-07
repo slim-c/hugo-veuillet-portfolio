@@ -102,7 +102,7 @@ const App = () => {
             <img
               src={images[currentIndex]}
               className={`w-full h-full object-contain ${getScaleClass()}`}
-              alt={`Photo ${currentIndex + 1}`}
+              alt="Photographie par Hugo Veuillet"
             />
           )}
         </div>

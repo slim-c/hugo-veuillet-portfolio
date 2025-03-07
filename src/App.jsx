@@ -5,6 +5,7 @@ const App = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [pauseAutoSlide, setPauseAutoSlide] = useState(false);
   const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
+  const [imageLoaded, setImageLoaded] = useState(false);
   const [size, setSize] = useState(getImageSize());
 
   useEffect(() => {
@@ -29,7 +30,10 @@ const App = () => {
     if (images.length > 0) {
       const img = new Image();
       img.src = images[currentIndex];
-      img.onload = () => setImageDimensions({ width: img.width, height: img.height });
+      img.onload = () => {
+        setImageDimensions({ width: img.width, height: img.height });
+        setImageLoaded(true); 
+      };
     }
   }, [currentIndex, images]);
 
@@ -77,9 +81,8 @@ const App = () => {
   }
 
   function getScaleClass() {
-    if (imageDimensions.width === 0 || imageDimensions.height === 0) {
-      return "";
-    }
+    if (!imageLoaded) return ""; 
+
     const isViewportLandscape = window.innerWidth > window.innerHeight;
     const isImageLandscape = imageDimensions.width > imageDimensions.height;
     return isViewportLandscape === isImageLandscape ? "scale-120" : "scale-100";
@@ -87,7 +90,6 @@ const App = () => {
 
   return (
     <div className="relative h-screen w-screen bg-white text-gray-900 flex flex-col justify-center items-center overflow-clip">
-
       <div className="absolute top-0 left-4 z-10 p-4 bg-white">
         <h1 className="text-3xl lg:text-3xl md:text-base sm:text-xs">hugo veuillet</h1>
       </div>
@@ -101,7 +103,10 @@ const App = () => {
           {images.length > 0 && (
             <img
               src={images[currentIndex]}
-              className={`w-full h-full object-contain ${getScaleClass()}`}
+              onLoad={() => setImageLoaded(true)}
+              className={`w-full h-full object-contain transition-opacity duration-500 ${
+                imageLoaded ? "opacity-100" : "opacity-0"
+              } ${getScaleClass()}`}
               alt="Photographie par Hugo Veuillet"
             />
           )}

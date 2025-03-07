@@ -24,8 +24,14 @@ jobs:
       - name: Build the project
         run: npm run build
 
+      - name: Ensure CNAME file is included
+        run: cp CNAME dist/  
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
           folder: dist
+          clean: true  
+          single-commit: true  
+          cname: hugoveuillet.com  

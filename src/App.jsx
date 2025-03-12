@@ -107,7 +107,7 @@ const App = () => {
               className={`w-full h-full object-contain transition-opacity duration-500 ${
                 imageLoaded ? "opacity-100" : "opacity-0"
               } ${getScaleClass()}`}
-              alt="Photographie par Hugo Veuillet"
+              alt={`Photographie par Hugo Veuillet - Image ${currentIndex + 1}`}
             />
           )}
         </div>
@@ -115,7 +115,7 @@ const App = () => {
 
       <div className="absolute bottom-0 right-4 z-10 p-4 bg-white">
         <div className="flex flex-row gap-2">
-          <a href="mailto:contact@hugoveuillet.com" className="text-2xl sm:text-xs md:text-base lg:text-2xl hover:underline italic">contact</a>
+          <a href="mailto:contact@hugoveuillet.com" aria-label="Envoyer un email à Hugo Veuillet" className="text-2xl sm:text-xs md:text-base lg:text-2xl hover:underline italic">contact</a>
           <a href="https://instagram.com/hugoveuillet" className="text-2xl sm:text-xs md:text-base lg:text-2xl hover:underline italic" target="_blank" rel="noopener noreferrer">instagram</a>
         </div>
       </div>

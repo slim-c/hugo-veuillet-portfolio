@@ -107,7 +107,7 @@ const App = () => {
               className={`w-full h-full object-contain transition-opacity duration-500 ${
                 imageLoaded ? "opacity-100" : "opacity-0"
               } ${getScaleClass()}`}
-              alt={`Photographie par Hugo Veuillet - Image ${currentIndex + 1}`}
+              alt={"hugo veuillet"}
             />
           )}
         </div>
